@@ -1,4 +1,4 @@
-package org.egsaving.tcbbank
+package org.ngazi.parking
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
