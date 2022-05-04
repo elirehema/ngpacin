@@ -6,7 +6,7 @@ class ReusableDrawerListTile extends  StatefulWidget{
   final String title;
   final String subtitle;
   final IconData leading;
-  final String routename;
+  final String route;
   final bool disabled;
   final GestureTapCallback onTap;
 
@@ -14,7 +14,7 @@ class ReusableDrawerListTile extends  StatefulWidget{
      required this.title,
     required this.subtitle,
     required this.disabled,
-   required this.leading, required this.routename,required this.onTap});
+   required this.leading, required this.route,  required this.onTap});
 
   @override
   ReusableListTile createState() => new ReusableListTile();
@@ -28,9 +28,7 @@ class ReusableListTile extends State<ReusableDrawerListTile>{
       dense: true,
       isThreeLine: false,
       leading: Icon(widget.leading, color: colorPrimary,),
-       onTap: widget.disabled ? () {
-
-       } : widget.onTap,
+       onTap: widget.disabled ? () {} : widget.onTap,
       
     );
     

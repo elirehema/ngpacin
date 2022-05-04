@@ -1,6 +1,8 @@
+import 'package:mobile/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:mobile/utils/utils.dart';
 
 class ResponsiveButton extends StatefulWidget {
   final String title;
@@ -25,11 +27,8 @@ class _ResponsiveButtonWidgetState extends State<ResponsiveButton> {
   Widget build(BuildContext context) {
     return  ElevatedButton(
             onPressed: widget.tapCallback,
-            child: Text(' ${widget.title}'),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-              minimumSize: Size(200.0, 40.0)
-            ),
+            child: Text(' ${widget.title}',style: TextStyle(fontWeight: FontWeight.bold),),
+            style: Utils.coloredButtonStyle(Constants.clr_blue)
           );
   }
 }

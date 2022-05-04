@@ -1,7 +1,7 @@
 import 'package:flutter/painting.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/utils/Constants.dart';
 
 class SomethingWrongHasHappened extends StatelessWidget {
   @override
@@ -10,9 +10,9 @@ class SomethingWrongHasHappened extends StatelessWidget {
       child:  Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(MdiIcons.cloudQuestion, size:42.0,color: Colors.redAccent),
+          Icon(Icons.cloud_off_outlined, size:42.0,color: Colors.redAccent),
           SizedBox(height: 10,),
-          Text('Oops! \n Something wrong has happened. \n Please try again later  ', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.normal, fontSize: 19.0, color: Colors.redAccent),)
+          Text('Oops! \n Something wrong has happened. \n Please try again later  ', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.normal, fontSize: 19.0, color: Constants.clr_red),)
         ],
       ),
     );

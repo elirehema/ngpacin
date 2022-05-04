@@ -1,10 +1,35 @@
-import 'package:mobile/utils/navigation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum enumKey { IS_LOGGED_IN, BASE_64_EncodedAuthenticationKey, USER_NAME, BASE_URL }
+import 'navigation_service.dart';
+
+enum enumKey {
+  IS_LOGGED_IN,
+  BASE_64_EncodedAuthenticationKey,
+  HAS_ACCEPTED_TERMS_AND_CONDITIONS,
+  HAS_READ_WHAT_IS_MKOBA,
+  TOKEN_REQUIRED
+}
+enum  currentUserEnum{
+   LANGUAGE, NETWORK, M_SSD_IN
+}
+enum securityEnum{
+  USERNAME, PASSWORD, PASSCODE
+}
+
+enum tokenEnum{
+  TOKEN_MSISDN
+}
 
 class SharedPreference {
   late SharedPreferences prefs;
+  static final _instance = SharedPreference._internal();
+
+  SharedPreference._internal();
+
+  static SharedPreference getInstance() {
+    return _instance;
+  }
+
 
   setStringToSF(String key, String value) async {
     prefs = await SharedPreferences.getInstance();
@@ -33,24 +58,29 @@ class SharedPreference {
 
   Future<String> getStringValuesSF(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.reload();
     return prefs.getString(key).toString();
   }
 
 
   Future<bool?> getBoolValuesSF(String key) async {
     prefs = await SharedPreferences.getInstance();
+    prefs.reload();
     return prefs.getBool(key);
    
   }
 
   Future<bool> clearSF() async {
     prefs = await SharedPreferences.getInstance();
-    prefs.remove(enumKey.BASE_64_EncodedAuthenticationKey.toString());
-    prefs.remove(enumKey.USER_NAME.toString());
     NavigationService.instance.navigateTo("/login");
-    return prefs.setBool(enumKey.IS_LOGGED_IN.toString(), false);
+    return prefs.clear();
   }
-/**
+  /**
+  getIntValuesSF(String key) async {
+    int intValue = await getSp().getInt(key);
+    return intValue;
+  }
+
   getDoubleValuesSF(String key) async {
     double doubleValue = await getSp().getDouble(key);
     return doubleValue;
@@ -59,9 +89,11 @@ class SharedPreference {
   deleteValueSF(String key) async {
     return await getSp().remove(key);
   }
+   **/
 
   contain(String key) async{
-    return await getSp().containsKey(key);
+    prefs = await SharedPreferences.getInstance();
+    return  prefs.containsKey(key);
   }
-    **/
+
 }

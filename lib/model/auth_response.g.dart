@@ -19,39 +19,35 @@ class _$AuthResponseSerializer implements StructuredSerializer<AuthResponse> {
   Iterable<Object?> serialize(Serializers serializers, AuthResponse object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'permissions',
-      serializers.serialize(object.permissions,
+      'username',
+      serializers.serialize(object.username,
+          specifiedType: const FullType(String)),
+      'userId',
+      serializers.serialize(object.userId, specifiedType: const FullType(int)),
+      'base64EncodedAuthenticationKey',
+      serializers.serialize(object.base64EncodedAuthenticationKey,
+          specifiedType: const FullType(String)),
+      'authenticated',
+      serializers.serialize(object.authenticated,
+          specifiedType: const FullType(bool)),
+      'officeId',
+      serializers.serialize(object.officeId,
+          specifiedType: const FullType(int)),
+      'roles',
+      serializers.serialize(object.roles,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(String)])),
+              const FullType(BuiltList, const [const FullType(AuthRole)])),
+      'officeName',
+      serializers.serialize(object.officeName,
+          specifiedType: const FullType(String)),
+      'shouldRenewPassword',
+      serializers.serialize(object.shouldRenewPassword,
+          specifiedType: const FullType(bool)),
+      'isTwoFactorAuthenticationRequired',
+      serializers.serialize(object.isTwoFactorAuthenticationRequired,
+          specifiedType: const FullType(bool)),
     ];
-    Object? value;
-    value = object.id;
-    if (value != null) {
-      result
-        ..add('id')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.email;
-    if (value != null) {
-      result
-        ..add('email')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.username;
-    if (value != null) {
-      result
-        ..add('username')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.accessToken;
-    if (value != null) {
-      result
-        ..add('accessToken')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
+
     return result;
   }
 
@@ -67,27 +63,43 @@ class _$AuthResponseSerializer implements StructuredSerializer<AuthResponse> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
-        case 'email':
-          result.email = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'username':
           result.username = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+              specifiedType: const FullType(String)) as String;
           break;
-        case 'accessToken':
-          result.accessToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
-        case 'permissions':
-          result.permissions.replace(serializers.deserialize(value,
+        case 'base64EncodedAuthenticationKey':
+          result.base64EncodedAuthenticationKey = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'authenticated':
+          result.authenticated = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'officeId':
+          result.officeId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'roles':
+          result.roles.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(String)]))!
+                      BuiltList, const [const FullType(AuthRole)]))!
               as BuiltList<Object?>);
+          break;
+        case 'officeName':
+          result.officeName = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'shouldRenewPassword':
+          result.shouldRenewPassword = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'isTwoFactorAuthenticationRequired':
+          result.isTwoFactorAuthenticationRequired = serializers
+              .deserialize(value, specifiedType: const FullType(bool)) as bool;
           break;
       }
     }
@@ -98,28 +110,52 @@ class _$AuthResponseSerializer implements StructuredSerializer<AuthResponse> {
 
 class _$AuthResponse extends AuthResponse {
   @override
-  final int? id;
+  final String username;
   @override
-  final String? email;
+  final int userId;
   @override
-  final String? username;
+  final String base64EncodedAuthenticationKey;
   @override
-  final String? accessToken;
+  final bool authenticated;
   @override
-  final BuiltList<String> permissions;
+  final int officeId;
+  @override
+  final BuiltList<AuthRole> roles;
+  @override
+  final String officeName;
+  @override
+  final bool shouldRenewPassword;
+  @override
+  final bool isTwoFactorAuthenticationRequired;
 
   factory _$AuthResponse([void Function(AuthResponseBuilder)? updates]) =>
       (new AuthResponseBuilder()..update(updates)).build();
 
   _$AuthResponse._(
-      {this.id,
-      this.email,
-      this.username,
-      this.accessToken,
-      required this.permissions})
+      {required this.username,
+      required this.userId,
+      required this.base64EncodedAuthenticationKey,
+      required this.authenticated,
+      required this.officeId,
+      required this.roles,
+      required this.officeName,
+      required this.shouldRenewPassword,
+      required this.isTwoFactorAuthenticationRequired})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(username, 'AuthResponse', 'username');
+    BuiltValueNullFieldError.checkNotNull(userId, 'AuthResponse', 'userId');
+    BuiltValueNullFieldError.checkNotNull(base64EncodedAuthenticationKey,
+        'AuthResponse', 'base64EncodedAuthenticationKey');
     BuiltValueNullFieldError.checkNotNull(
-        permissions, 'AuthResponse', 'permissions');
+        authenticated, 'AuthResponse', 'authenticated');
+    BuiltValueNullFieldError.checkNotNull(officeId, 'AuthResponse', 'officeId');
+    BuiltValueNullFieldError.checkNotNull(roles, 'AuthResponse', 'roles');
+    BuiltValueNullFieldError.checkNotNull(
+        officeName, 'AuthResponse', 'officeName');
+    BuiltValueNullFieldError.checkNotNull(
+        shouldRenewPassword, 'AuthResponse', 'shouldRenewPassword');
+    BuiltValueNullFieldError.checkNotNull(isTwoFactorAuthenticationRequired,
+        'AuthResponse', 'isTwoFactorAuthenticationRequired');
   }
 
   @override
@@ -133,29 +169,51 @@ class _$AuthResponse extends AuthResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is AuthResponse &&
-        id == other.id &&
-        email == other.email &&
         username == other.username &&
-        accessToken == other.accessToken &&
-        permissions == other.permissions;
+        userId == other.userId &&
+        base64EncodedAuthenticationKey ==
+            other.base64EncodedAuthenticationKey &&
+        authenticated == other.authenticated &&
+        officeId == other.officeId &&
+        roles == other.roles &&
+        officeName == other.officeName &&
+        shouldRenewPassword == other.shouldRenewPassword &&
+        isTwoFactorAuthenticationRequired ==
+            other.isTwoFactorAuthenticationRequired;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, id.hashCode), email.hashCode), username.hashCode),
-            accessToken.hashCode),
-        permissions.hashCode));
+        $jc(
+            $jc(
+                $jc(
+                    $jc(
+                        $jc(
+                            $jc($jc($jc(0, username.hashCode), userId.hashCode),
+                                base64EncodedAuthenticationKey.hashCode),
+                            authenticated.hashCode),
+                        officeId.hashCode),
+                    roles.hashCode),
+                officeName.hashCode),
+            shouldRenewPassword.hashCode),
+        isTwoFactorAuthenticationRequired.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AuthResponse')
-          ..add('id', id)
-          ..add('email', email)
           ..add('username', username)
-          ..add('accessToken', accessToken)
-          ..add('permissions', permissions))
+          ..add('userId', userId)
+          ..add(
+              'base64EncodedAuthenticationKey', base64EncodedAuthenticationKey)
+          ..add('authenticated', authenticated)
+          ..add('officeId', officeId)
+          ..add('roles', roles)
+          ..add('officeName', officeName)
+          ..add('shouldRenewPassword', shouldRenewPassword)
+          ..add('isTwoFactorAuthenticationRequired',
+              isTwoFactorAuthenticationRequired))
         .toString();
   }
 }
@@ -164,38 +222,65 @@ class AuthResponseBuilder
     implements Builder<AuthResponse, AuthResponseBuilder> {
   _$AuthResponse? _$v;
 
-  int? _id;
-  int? get id => _$this._id;
-  set id(int? id) => _$this._id = id;
-
-  String? _email;
-  String? get email => _$this._email;
-  set email(String? email) => _$this._email = email;
-
   String? _username;
   String? get username => _$this._username;
   set username(String? username) => _$this._username = username;
 
-  String? _accessToken;
-  String? get accessToken => _$this._accessToken;
-  set accessToken(String? accessToken) => _$this._accessToken = accessToken;
+  int? _userId;
+  int? get userId => _$this._userId;
+  set userId(int? userId) => _$this._userId = userId;
 
-  ListBuilder<String>? _permissions;
-  ListBuilder<String> get permissions =>
-      _$this._permissions ??= new ListBuilder<String>();
-  set permissions(ListBuilder<String>? permissions) =>
-      _$this._permissions = permissions;
+  String? _base64EncodedAuthenticationKey;
+  String? get base64EncodedAuthenticationKey =>
+      _$this._base64EncodedAuthenticationKey;
+  set base64EncodedAuthenticationKey(String? base64EncodedAuthenticationKey) =>
+      _$this._base64EncodedAuthenticationKey = base64EncodedAuthenticationKey;
+
+  bool? _authenticated;
+  bool? get authenticated => _$this._authenticated;
+  set authenticated(bool? authenticated) =>
+      _$this._authenticated = authenticated;
+
+  int? _officeId;
+  int? get officeId => _$this._officeId;
+  set officeId(int? officeId) => _$this._officeId = officeId;
+
+  ListBuilder<AuthRole>? _roles;
+  ListBuilder<AuthRole> get roles =>
+      _$this._roles ??= new ListBuilder<AuthRole>();
+  set roles(ListBuilder<AuthRole>? roles) => _$this._roles = roles;
+
+  String? _officeName;
+  String? get officeName => _$this._officeName;
+  set officeName(String? officeName) => _$this._officeName = officeName;
+
+  bool? _shouldRenewPassword;
+  bool? get shouldRenewPassword => _$this._shouldRenewPassword;
+  set shouldRenewPassword(bool? shouldRenewPassword) =>
+      _$this._shouldRenewPassword = shouldRenewPassword;
+
+  bool? _isTwoFactorAuthenticationRequired;
+  bool? get isTwoFactorAuthenticationRequired =>
+      _$this._isTwoFactorAuthenticationRequired;
+  set isTwoFactorAuthenticationRequired(
+          bool? isTwoFactorAuthenticationRequired) =>
+      _$this._isTwoFactorAuthenticationRequired =
+          isTwoFactorAuthenticationRequired;
 
   AuthResponseBuilder();
 
   AuthResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _id = $v.id;
-      _email = $v.email;
       _username = $v.username;
-      _accessToken = $v.accessToken;
-      _permissions = $v.permissions.toBuilder();
+      _userId = $v.userId;
+      _base64EncodedAuthenticationKey = $v.base64EncodedAuthenticationKey;
+      _authenticated = $v.authenticated;
+      _officeId = $v.officeId;
+      _roles = $v.roles.toBuilder();
+      _officeName = $v.officeName;
+      _shouldRenewPassword = $v.shouldRenewPassword;
+      _isTwoFactorAuthenticationRequired = $v.isTwoFactorAuthenticationRequired;
       _$v = null;
     }
     return this;
@@ -218,16 +303,29 @@ class AuthResponseBuilder
     try {
       _$result = _$v ??
           new _$AuthResponse._(
-              id: id,
-              email: email,
-              username: username,
-              accessToken: accessToken,
-              permissions: permissions.build());
+              username: BuiltValueNullFieldError.checkNotNull(
+                  username, 'AuthResponse', 'username'),
+              userId: BuiltValueNullFieldError.checkNotNull(
+                  userId, 'AuthResponse', 'userId'),
+              base64EncodedAuthenticationKey: BuiltValueNullFieldError.checkNotNull(
+                  base64EncodedAuthenticationKey, 'AuthResponse', 'base64EncodedAuthenticationKey'),
+              authenticated: BuiltValueNullFieldError.checkNotNull(
+                  authenticated, 'AuthResponse', 'authenticated'),
+              officeId: BuiltValueNullFieldError.checkNotNull(
+                  officeId, 'AuthResponse', 'officeId'),
+              roles: roles.build(),
+              officeName: BuiltValueNullFieldError.checkNotNull(
+                  officeName, 'AuthResponse', 'officeName'),
+              shouldRenewPassword: BuiltValueNullFieldError.checkNotNull(
+                  shouldRenewPassword, 'AuthResponse', 'shouldRenewPassword'),
+              isTwoFactorAuthenticationRequired:
+                  BuiltValueNullFieldError.checkNotNull(
+                      isTwoFactorAuthenticationRequired, 'AuthResponse', 'isTwoFactorAuthenticationRequired'));
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'permissions';
-        permissions.build();
+        _$failedField = 'roles';
+        roles.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AuthResponse', _$failedField, e.toString());
@@ -239,4 +337,4 @@ class AuthResponseBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

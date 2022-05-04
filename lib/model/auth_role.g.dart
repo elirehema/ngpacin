@@ -17,35 +17,19 @@ class _$AuthRoleSerializer implements StructuredSerializer<AuthRole> {
   @override
   Iterable<Object?> serialize(Serializers serializers, AuthRole object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    Object? value;
-    value = object.id;
-    if (value != null) {
-      result
-        ..add('id')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.description;
-    if (value != null) {
-      result
-        ..add('description')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.disabled;
-    if (value != null) {
-      result
-        ..add('disabled')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
-    }
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'description',
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
+      'disabled',
+      serializers.serialize(object.disabled,
+          specifiedType: const FullType(bool)),
+    ];
+
     return result;
   }
 
@@ -62,19 +46,19 @@ class _$AuthRoleSerializer implements StructuredSerializer<AuthRole> {
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
+              specifiedType: const FullType(int)) as int;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'disabled':
           result.disabled = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool?;
+              specifiedType: const FullType(bool)) as bool;
           break;
       }
     }
@@ -85,19 +69,29 @@ class _$AuthRoleSerializer implements StructuredSerializer<AuthRole> {
 
 class _$AuthRole extends AuthRole {
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? description;
+  final String description;
   @override
-  final bool? disabled;
+  final bool disabled;
 
   factory _$AuthRole([void Function(AuthRoleBuilder)? updates]) =>
       (new AuthRoleBuilder()..update(updates)).build();
 
-  _$AuthRole._({this.id, this.name, this.description, this.disabled})
-      : super._();
+  _$AuthRole._(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.disabled})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, 'AuthRole', 'id');
+    BuiltValueNullFieldError.checkNotNull(name, 'AuthRole', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        description, 'AuthRole', 'description');
+    BuiltValueNullFieldError.checkNotNull(disabled, 'AuthRole', 'disabled');
+  }
 
   @override
   AuthRole rebuild(void Function(AuthRoleBuilder) updates) =>
@@ -182,10 +176,16 @@ class AuthRoleBuilder implements Builder<AuthRole, AuthRoleBuilder> {
   _$AuthRole build() {
     final _$result = _$v ??
         new _$AuthRole._(
-            id: id, name: name, description: description, disabled: disabled);
+            id: BuiltValueNullFieldError.checkNotNull(id, 'AuthRole', 'id'),
+            name:
+                BuiltValueNullFieldError.checkNotNull(name, 'AuthRole', 'name'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, 'AuthRole', 'description'),
+            disabled: BuiltValueNullFieldError.checkNotNull(
+                disabled, 'AuthRole', 'disabled'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

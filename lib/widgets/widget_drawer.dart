@@ -11,7 +11,7 @@ class DrawerWidget extends StatelessWidget {
       padding: EdgeInsets.zero,
       children: <Widget>[
         DrawerHeader(
-          child: Text('Ospic HMS',
+          child: Text('EG-SAVINGS',
               maxLines: 1,
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
@@ -22,7 +22,7 @@ class DrawerWidget extends StatelessWidget {
           title: 'Home',
           leading: MdiIcons.homeCircleOutline,
           disabled: false,
-          routename: '/home',
+          route: '/home',
           onTap: () {
             Navigator.pushNamed(context, '/home');
           },
@@ -33,7 +33,7 @@ class DrawerWidget extends StatelessWidget {
           title: 'About Us',
           leading: MdiIcons.alphaACircleOutline,
           disabled: false,
-          routename: '/about',
+          route: '/about',
           onTap: () {
             Navigator.of(context).pushNamed('/about');
           },
@@ -44,7 +44,7 @@ class DrawerWidget extends StatelessWidget {
           title: 'Contact Us',
           leading: MdiIcons.alphaCCircleOutline,
           disabled: false,
-          routename: '/about',
+          route: '/contacts',
           onTap: () {
             Navigator.pushNamed(context, '/contacts');
           },
@@ -55,7 +55,7 @@ class DrawerWidget extends StatelessWidget {
           title: 'Help',
           leading: MdiIcons.helpCircleOutline,
           disabled: false,
-          routename: '/about',
+          route: '/help',
           onTap: () {
             Navigator.pushNamed(context, '/help');
           },
@@ -66,7 +66,7 @@ class DrawerWidget extends StatelessWidget {
           title: 'This App',
           leading: MdiIcons.alertCircleOutline,
           disabled: false,
-          routename: '/about',
+          route: '/app',
           onTap: () {
             Navigator.pushNamed(context, '/app');
           },

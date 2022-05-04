@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class NavigationService{
@@ -22,6 +21,5 @@ class NavigationService{
 
   goback(){
     return navigationKey.currentState!.pop();
-
   }
 }

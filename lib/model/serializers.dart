@@ -1,17 +1,17 @@
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
+import 'package:mobile/model/index.dart';
 import 'package:built_collection/built_collection.dart';
-
-import 'index.dart';
-
 
 part 'serializers.g.dart';
 
 @SerializersFor(const [
-  Patient, AuthPost, AuthResponse, AuthRole,
-  Privilege, User, Transaction,TransactionResponse,
-  Role, Consultation, ContactsInformation, Bill, BillPayload,
-  Staff, Department,ConsultationPayload, Diagnosis, Report,Visit, Admission,
-  Insurance, InsuranceCard, AppointmentInfo, Appointment, AppointmentRequest, PasswordUpdate, TokenUpdate
+    Group, AuthPost, AuthResponse, AuthRole,Auth2Response, Notifications,  Changes,
+    GroupPost,OfficeResource,UserPost, GroupPost, MemberPost,NotificationApprove,LanguageAndNetwork,
+    Contribution, TransferRequest, ShareRequest,CurrentUser,LoanPayload,LoanResponse,Administration,
+    GroupMember, GroupMemberPage,Fees,UserProfile, Token, ValueLabel, Penalty,GroupSettings, Password,
+    SavingAccount,SavingPayload, Balance,SavingTransaction
 ])
-final Serializers serializers = (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
+final Serializers serializers = (_$serializers.toBuilder()
+        ..addPlugin(StandardJsonPlugin()))
+        .build();

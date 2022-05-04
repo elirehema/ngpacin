@@ -3,7 +3,7 @@ import 'package:mobile/model/serializers.dart';
 import 'package:built_collection/built_collection.dart';
 
 class  BuiltValueConverter extends JsonConverter{
-  @override
+   @override
   Request convertRequest(Request request) {
     return super.convertRequest(
       request.copyWith(
@@ -26,7 +26,7 @@ class  BuiltValueConverter extends JsonConverter{
     final Response dynamicResponse = super.convertResponse(response);
     // customBody can be either a BuiltList<SingleItemType> or just the SingleItemType (if there's no list).
     final BodyType customBody =
-    _convertToCustomObject<SingleItemType>(dynamicResponse.body);
+        _convertToCustomObject<SingleItemType>(dynamicResponse.body);
 
     // Return the original dynamicResponse with a no-longer-dynamic body type.
     return dynamicResponse.copyWith<BodyType>(body: customBody);
@@ -44,8 +44,8 @@ class  BuiltValueConverter extends JsonConverter{
   }
 
   BuiltList<SingleItemType> _deserializeListOf<SingleItemType>(
-      List dynamicList,
-      ) {
+    List dynamicList,
+  ) {
     // Make a BuiltList holding individual custom objects
     return BuiltList<SingleItemType>(
       dynamicList.map((element) => _deserialize<SingleItemType>(element)),
