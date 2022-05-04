@@ -61,7 +61,7 @@ jobs:
           token: ${{ secrets.GITHUBTOKEN }}
           branch: master # The branch the action should deploy to.
           repository-name: elirehema/appfiles
-          target-folder: mobile/tcb/apks
+          target-folder: mobile/pcks/apks
           folder: build/app/outputs/ # The folder the action should deploy.
 
       - name: Deploy appbundle 🚀
@@ -70,5 +70,5 @@ jobs:
           token: ${{ secrets.GITHUBTOKEN }}
           branch: master # The branch the action should deploy to.
           repository-name: elirehema/appfiles
-          target-folder: mobile/tcb/appbundle
+          target-folder: mobile/pcks/appbundle
           folder: build/app/outputs/bundle/debug # The folder the action should deploy.
