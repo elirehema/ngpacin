@@ -197,20 +197,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  contact_picker_platform_interface:
-    dependency: transitive
-    description:
-      name: contact_picker_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.5.1"
-  contact_picker_web:
-    dependency: transitive
-    description:
-      name: contact_picker_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.5.1"
   convert:
     dependency: transitive
     description:
@@ -305,20 +291,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_phoenix:
-    dependency: "direct main"
-    description:
-      name: flutter_phoenix
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
-  flutter_settings_ui:
-    dependency: "direct main"
-    description:
-      name: flutter_settings_ui
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -329,13 +301,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  fluttercontactpicker:
-    dependency: "direct main"
-    description:
-      name: fluttercontactpicker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.5.1"
   frontend_server_client:
     dependency: transitive
     description:
@@ -777,4 +742,4 @@ packages:
     version: "3.1.0"
 sdks:
   dart: ">=2.14.0 <3.0.0"
-  flutter: ">=2.0.0"
+  flutter: ">=1.20.0"
