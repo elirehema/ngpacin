@@ -18,10 +18,10 @@ class _SplashScreenState extends State<SplashScreen> {
       print(isLoggedIn && hasPasscode);
       if(isLoggedIn && hasPasscode){
         print('Logged In');
-        Navigator.of(context).pushReplacementNamed('/passcode');
+        Navigator.of(context).pushReplacementNamed('/scanner');
       }else{
         print('Not Logged In');
-        Navigator.of(context).pushReplacementNamed('/login');
+        Navigator.of(context).pushReplacementNamed('/scanner');
       }
  
     
