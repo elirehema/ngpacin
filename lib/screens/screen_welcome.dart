@@ -16,8 +16,6 @@ class Destination {
 
 List<Destination> allDestinations = <Destination>[
   Destination('nav.home', Icons.cottage_outlined, ScreenHome()),
-  Destination('nav.products', Icons.credit_score_outlined, ScreenProducts()),
-  Destination('nav.settings', Icons.tune_outlined, ScreenSettings())
 ];
 
 class ScreenWelcome extends StatefulWidget {
@@ -54,12 +52,7 @@ class _WelcomeState extends State<ScreenWelcome>
                     ),
                     backgroundColor:  colorPrimary,
                     onPressed: () {
-                      Future.delayed(Duration.zero, () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => new ScreenCreateGroup()));
-                      });
+                      Future.delayed(Duration.zero, () {});
                     }));
           }),
           bottomNavigationBar: BottomNavigationBar(

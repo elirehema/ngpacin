@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 
-Color colorPrimary = new Color.fromRGBO(14,86,64, 1);
-Color colorPrimaryDark = new Color.fromRGBO(5,54,39, 1);
+Color colorPrimary = new Color.fromRGBO(27,138,217, 1);
+Color colorPrimaryDark = new Color.fromRGBO(19,85,132, 1);
 Color colorAccent = new Color.fromRGBO(234, 234, 234, 1.0);
 Color textPrimaryColor = Colors.black87;
 Color scaffoldBackgroundColor = colorAccent;

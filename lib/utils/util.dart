@@ -229,35 +229,4 @@ class Utils {
     }
     return color;
   }
-
-  static FutureBuilder<Response<String>> buildGroupImage(BuildContext context,String groupType, int groupId, double size) {
-    ThemeData _theme = Theme.of(context);
-    return FutureBuilder<Response<String>>(
-      future: Provider.of<PostApiService>(context).getGroupImage('groups',groupId.toString()),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          String? _imageString = snapshot.data?.body;
-          if (_imageString == 'No image uploaded') {
-            return Image.asset(groupType == '1'?'images/family.png':'images/peoples.png', fit: BoxFit.cover,width: 20.0,);
-          } else if (snapshot.hasError) {
-            return Image.asset(groupType == '1'?'images/family.png':'images/peoples.png', fit: BoxFit.cover, width: 20.0,);
-          } else {
-            final  String? _imageString = snapshot.data?.body;
-            Uint8List _imageBytes = base64Decode(_imageString!);
-            return ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
-                child: Container(
-                    padding: EdgeInsets.all(0.0),
-                    decoration: BoxDecoration(color: colorAccent,),
-                    child: Image.memory(_imageBytes, fit: BoxFit.cover,height: size, width: size,)
-                ));
-          }
-        } else {
-          return Center(
-            child: Image.asset(groupType == '1'?'images/family.png':'images/peoples.png', fit: BoxFit.cover, width:50.0, height: 55.0,),
-          );
-        }
-      },
-    );
-  }
 }
