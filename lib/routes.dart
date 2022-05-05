@@ -5,8 +5,6 @@ import 'package:mobile/data/post_api_service.dart';
 import 'package:mobile/screens/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/screen_server_error.dart';
-import 'package:mobile/utils/colors.dart';
 import 'package:mobile/utils/navigation_service.dart';
 import 'package:mobile/utils/theme_class.dart';
 import 'package:provider/provider.dart';
@@ -61,10 +59,6 @@ class _MyAppState extends State<MyApp> {
       '/login': (context) => LoginScreen(),
       '/signup': (BuildContext context) => ScreenSignUp(),
       '/welcome': (BuildContext context) => ScreenWelcome(),
-      '/error': (BuildContext context) => ScreenServerError(),
-      '/notifications': (BuildContext context) => ScreenNotifications(),
-      '/passcode': (BuildContext context) => ScreenPasscodeVerify(),
-      '/enterpass': (BuildContext context) => ScreenEnterPasscode(),
     };
 
   void changeTheme(ThemeMode themeMode){
@@ -86,7 +80,7 @@ class _MyAppState extends State<MyApp> {
           themeMode: _themeMode,
           debugShowCheckedModeBanner: false,
           routes: routes,
-          title: 'EgSaving',
+          title: 'EgScanner',
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,

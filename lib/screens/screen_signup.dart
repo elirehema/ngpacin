@@ -1,12 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile/data/post_api_service.dart';
-import 'package:mobile/screens/screen_verification_code.dart';
 import 'package:mobile/utils/colors.dart';
 import 'package:mobile/model/index.dart';
 import 'package:mobile/utils/utils.dart';
-import 'package:progress_dialog/progress_dialog.dart';
-import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class ScreenSignUp extends StatefulWidget{
@@ -135,37 +131,6 @@ class _SignUpScreenState extends State<ScreenSignUp> {
                     },
                   ),
                   Container(
-                      child: DropdownButtonFormField(
-                        value: _value,
-                        selectedItemBuilder: (BuildContext context) {
-                          return Constants.NETWORK_TYPES.map<Widget>((
-                              String item) {
-                            return Text('$item',style: _theme.textTheme.headline3,);
-                          }).toList();
-                        },
-                        items: Constants.NETWORK_TYPES.map((String item) {
-                          return DropdownMenuItem<String>(
-                            child: Text('$item',style: _theme.textTheme.headline3,),
-                            value: item,
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          _networkType = value.toString();
-                        },
-                        validator: (value) {
-                          if (value == null) {
-                            return 'warning.field_required'.tr();
-                          }
-                        },
-                        hint: Text('selection.network'.tr()),
-                        style: TextStyle(color: colorPrimary,
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal),
-                        icon: Icon(Icons.keyboard_arrow_down),
-                        isExpanded: true,
-                        isDense: true,
-                      )),
-                  Container(
                       padding: EdgeInsets.only(bottom: 10.0),
                       child: DropdownButtonFormField(
                         value: _value,
@@ -204,13 +169,7 @@ class _SignUpScreenState extends State<ScreenSignUp> {
                     style: Utils.buttonStyle(),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        var userPost = UserPost.from(
-                            username.text.toString(), firstname.text.toString(),
-                            lastname.text.toString(), email.text.toString(),
-                            password.text.toString(),
-                            repeatPassword.text.toString(),
-                            network: _networkType, language: _languageSelected);
-                        _requestForSignUp(context, userPost);
+                        //_requestForSignUp(context, userPost);
                       }
                     },
                     child:
@@ -226,63 +185,6 @@ class _SignUpScreenState extends State<ScreenSignUp> {
     );
   }
 
-
-  Future<void> _requestForSignUp(BuildContext context, UserPost body) async {
-    ProgressDialog pr = new ProgressDialog(context, isDismissible: true);
-    pr.update(
-      progress: 50.0,
-      message: "Please wait . . . ",
-
-      progressWidget: Container(
-          padding: EdgeInsets.all(8.0), child: CircularProgressIndicator()),
-      maxProgress: 100.0,
-      progressTextStyle: TextStyle(color: Constants.clr_blue, fontSize: 13.0,),
-      messageTextStyle: TextStyle(color: Constants.clr_blue, fontSize: 19.0,),
-    );
-    pr.show();
-    final response = await Provider.of<PostApiService>(context, listen: false)
-        .registerUser(body);
-
-    final int statusCode = response.statusCode;
-
-    print("Status code: $statusCode");
-    if (statusCode == 200) {
-      Changes? _changes = response.body;
-      pr.hide();
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-              new ScreenVerificationCodeDialog(body.username)));
-      /**showDialog(
-          context: context,
-          builder: (_) =>
-          new CupertinoAlertDialog(
-            title: new Text('dialog.msg.notification'.tr()),
-            content: new Text('${_changes!.description}'),
-            actions: <Widget>[
-              TextButton(
-                child: Text('dialog.msg.close'.tr()),
-                onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                          new ScreenVerificationCodeDialog(body.username)));
-                },
-              )
-            ],
-          ));
-      **/
-
-    } else {
-      pr.hide();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        backgroundColor: Colors.redAccent,
-        content: Text("Something happened. Please try again..."),
-      ));
-    }
-  }
 
 }
 

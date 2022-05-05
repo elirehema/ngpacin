@@ -15,7 +15,6 @@ List<Destination> allDestinations = <Destination>[
   Destination('Home', Icons.home,   ScreenHome()),
   Destination('Airtime', MdiIcons.fileUploadOutline,  Center(child: Text("Business"),)),
   Destination('Move Money', MdiIcons.cashPlus, Center(child: Text("School"),)),
-  Destination('Services', MdiIcons.waterWellOutline, ScreenServicesView()),
   Destination('Settings', MdiIcons.cogOutline,  Center(child: Text("Settings"),))
 ];
 
