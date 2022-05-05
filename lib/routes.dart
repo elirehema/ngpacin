@@ -50,7 +50,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
   final routes = <String, WidgetBuilder>{
-      '/login': (context) => LoginScreen(),
+      '/scanner': (context) => ScannerScreen(),
       '/signup': (BuildContext context) => ScreenSignUp(),
       '/welcome': (BuildContext context) => ScreenWelcome(),
     };
