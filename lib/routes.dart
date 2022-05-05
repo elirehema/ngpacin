@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:mobile/data/post_api_service.dart';
 import 'package:mobile/screens/index.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,9 +24,7 @@ class Routes {
           path: 'assets/translations', // <-- change the path of the translation files
           fallbackLocale: Locale('en'),
           useOnlyLangCode: true,
-          child: Phoenix(
-            child: MyApp(),
-          )
+          child:  MyApp()
       ),
     );
 
@@ -45,10 +42,7 @@ void _setupLogging(){
 
 
 class MyApp extends StatefulWidget {
-  static void setLanguage(BuildContext context, Locale locale){
-    context.setLocale(locale);
-    Phoenix.rebirth(context);
-  }
+
 
   @override
   _MyAppState createState()=>_MyAppState();

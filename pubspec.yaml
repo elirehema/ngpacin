@@ -33,10 +33,7 @@ dependencies:
    progress_dialog: ^1.2.4
    cupertino_icons: ^1.0.0
    responsive_builder: ^0.4.1
-   fluttercontactpicker: ^4.5.1
-   flutter_settings_ui: ^2.0.1
    easy_localization: ^3.0.0
-   flutter_phoenix: "^1.0.0"
    passcode_screen: ^2.0.0
    json_serializable: ^4.1.0
    json_annotation: ^4.0.0
