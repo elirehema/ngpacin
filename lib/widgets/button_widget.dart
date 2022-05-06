@@ -27,7 +27,7 @@ class _ResponsiveButtonWidgetState extends State<ResponsiveButton> {
   Widget build(BuildContext context) {
     return  ElevatedButton(
             onPressed: widget.tapCallback,
-            child: Text(' ${widget.title}',style: TextStyle(fontWeight: FontWeight.bold),),
+            child: Text(' ${widget.title}',style: TextStyle(fontWeight: FontWeight.w600, color:widget.textColor),),
             style: Utils.coloredButtonStyle(Constants.clr_blue)
           );
   }

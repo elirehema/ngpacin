@@ -24,6 +24,9 @@ abstract class PostApiService extends ChopperService {
   @Post(path: '/v1/app-internal/{endpoint}')
   Future<Response<Changes?>> administration(@Path("endpoint") String endpoint, @Body() AuthPost body);
 
+  @Post(path: '/verification')
+  Future<Response<DataResponse>> verifyScannedTokens(@Body() VerificationPayload body);
+
 
 
   static PostApiService create() {
@@ -35,11 +38,10 @@ abstract class PostApiService extends ChopperService {
       client: dartClient,
       converter: BuiltValueConverter(),
       interceptors: [
-        _addQuery,
+        //_addQuery,
         HeadersInterceptor({'Cache-control': 'no-cache', }),
         HeadersInterceptor({'Content-Type': 'application/json'}),
         HeadersInterceptor({'Accept': '*/*'}),
-        HeadersInterceptor({'Fineract-Platform-TenantId':'default'}),
         HttpLoggingInterceptor(),
         (Response response) async{
           if(response.statusCode == 401) {

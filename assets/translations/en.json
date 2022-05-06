@@ -43,7 +43,8 @@
       "proceed": "Proceed",
       "close": "Ok close",
       "resend_token": "Resend Token",
-      "verify_token": "Verify Token"
+      "verify_token": "Verify Token",
+      "ok": "Okay"
     },
     "msg": {
       "check_balance": "Sorry this service will cost you {}  Would you like to proceed ?",
