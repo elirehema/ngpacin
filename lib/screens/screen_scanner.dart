@@ -65,8 +65,15 @@ class _ScannerScreenState extends State<ScannerScreen> {
 
                                     title: 'Scan', tapCallback: () async{
                                       if (_formKey.currentState!.validate()) {
-                                        String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+                                        /**String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
                                             "#ff6666", "Cancel", false, ScanMode.DEFAULT);
+                                        **/
+                                        FlutterBarcodeScanner.getBarcodeStreamReceiver("#ff6666", "Cancel", false, ScanMode.DEFAULT)
+                                        ?.listen((barcode) {
+                                          print(barcode);
+                                        });
+
+
                                       }
                                     })
                               ])),
