@@ -23,4 +23,12 @@ class _$PostApiService extends PostApiService {
     final $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<Changes, Changes>($request);
   }
+
+  @override
+  Future<Response<DataResponse>> verifyScannedTokens(VerificationPayload body) {
+    final $url = '/verification';
+    final $body = body;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<DataResponse, DataResponse>($request);
+  }
 }

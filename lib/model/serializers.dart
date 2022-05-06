@@ -6,7 +6,7 @@ import 'package:built_collection/built_collection.dart';
 part 'serializers.g.dart';
 
 @SerializersFor(const [
-     AuthPost,Changes,
+     AuthPost,Changes,VerificationPayload,VerificationResponse,DataResponse
 ])
 final Serializers serializers = (_$serializers.toBuilder()
         ..addPlugin(StandardJsonPlugin()))
